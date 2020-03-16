@@ -12,12 +12,12 @@ import sys
 
 # Your name here, and any other people/sources who helped.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Ybrayym Abamov"
 
 
-def alphabetize(string):
-    """Returns alphabetized version of the string"""
-    return "".join(sorted(string.lower()))
+# def alphabetize(string):
+#     """Returns alphabetized version of the string"""
+#     return "".join(sorted(string.lower()))
 
 
 def find_anagrams(words):
@@ -27,12 +27,13 @@ def find_anagrams(words):
     Example:
     {'dgo': ['dog'], 'act': ['cat', 'act']}
     """
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
-    return anagrams
+    dict_ = {}
+    for word in words:
+        if ''.join(sorted(word)) in dict_:
+            dict_[''.join(sorted(word))] += [word]
+        else:
+            dict_[''.join(sorted(word))] = [word]
+    return dict_
 
 
 def main(args):
